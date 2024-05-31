@@ -2,7 +2,7 @@
 
 # LifeHack 2024 - TerroGraph
 
-## Team Members
+### Team Members
 
 - [Tristan Tan](https://github.com/tristantanjh)
 - [Oscar Qian](https://github.com/oscarqjh)
