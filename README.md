@@ -1,4 +1,4 @@
-<img src="/assets/logo.png" alt="TerroGraph logo" title="TerroGraph" align="right" height="60" />
+<img src="/assets/logo2.png" alt="TerroGraph logo" title="TerroGraph" align="right" height="60" />
 
 # LifeHack 2024 - TerroGraph
 
@@ -10,12 +10,14 @@
 - [Qu Zhetao](https://github.com/quzhetao01)
 
 ### Group Details
+
 - Group Name: 2 Waffles
 - Project Name: TerroGraph
 
-### Video Demo Link: 
+### Video Demo Link:
 
 ## Table of Contents
+
 - [Project Details](#project-details)
 - [Features](#features)
 - [How We Did It](#how-we-did-it)
@@ -24,6 +26,7 @@
 - [Installation](#installation)
 
 ## Project Details
+
 Reports and articles on terrorism usually contain a lot of text, which are unstructured and difficult to resolve across reports in an automated fashion. For instance, linking articles about a terror incident, all coming in at different times in a day with varying details, can be challenging. Each report contains entities (Person, Object, Location, Events) that could be represented in a knowledge graph and accessed through a chatbot. TerroGraph aims to design and implement a Large Language Model (LLM) that can extract entities from reports into a knowledge graph, and an LLM that can answer questions based on the generated knowledge graph.
 
 _Made for NUS' LifeHack 2024 - Theme 3, Subtheme 2._
@@ -33,38 +36,46 @@ _Made for NUS' LifeHack 2024 - Theme 3, Subtheme 2._
 Our project leverages LLMs (OpenAI) and Neo4j's knowledge graphs to create a comprehensive system for managing and querying information about terrorism incidents. The project consists of several key components:
 
 1. **User Interface**
-  - Chatbot: The chatbot interface allows users to ask queries about terrorism. It retrieves relevant information from the Neo4j database and provides responses based on the knowledge graph.
-  - PDF Uploader: Users can upload PDF files containing articles about terrorism. The system extracts text from the PDFs, processes the content to identify entities, and updates the knowledge graph accordingly.
+
+- Chatbot: The chatbot interface allows users to ask queries about terrorism. It retrieves relevant information from the Neo4j database and provides responses based on the knowledge graph.
+- PDF Uploader: Users can upload PDF files containing articles about terrorism. The system extracts text from the PDFs, processes the content to identify entities, and updates the knowledge graph accordingly.
+
 2. **Backend Components**
-  - Knowledge Graph: A Neo4j-based graph database that stores entities (Person, Object, Location, Events) and their relationships extracted from terrorism reports and articles.
-  - Web Scraper: A scheduler-based web scraper that periodically gathers new articles from reputable news sources and updates the knowledge graph.
-  - RAG Model: Combines information retrieval and generation to provide accurate and relevant responses to user queries by leveraging both the knowledge graph and external web searches.
+
+- Knowledge Graph: A Neo4j-based graph database that stores entities (Person, Object, Location, Events) and their relationships extracted from terrorism reports and articles.
+- Web Scraper: A scheduler-based web scraper that periodically gathers new articles from reputable news sources and updates the knowledge graph.
+- RAG Model: Combines information retrieval and generation to provide accurate and relevant responses to user queries by leveraging both the knowledge graph and external web searches.
 
 ## How We Did It
 
 1. Knowledge Graph Prepopulation:
-  - Collected data from an online database of known terror attacks.
-  - Processed the data to extract entities and relationships.
-  - Populated the Neo4j knowledge graph with the preprocessed data.
+
+- Collected data from an online database of known terror attacks.
+- Processed the data to extract entities and relationships.
+- Populated the Neo4j knowledge graph with the preprocessed data.
 
 2. RAG Model Implementation:
-  - Integrated a Retrieval-Augmented Generation model to handle user queries.
-  - Configured the model to retrieve relevant nodes and relationships from the Neo4j database.
-  - Set up the LLM to generate responses based on the retrieved information.
+
+- Integrated a Retrieval-Augmented Generation model to handle user queries.
+- Configured the model to retrieve relevant nodes and relationships from the Neo4j database.
+- Set up the LLM to generate responses based on the retrieved information.
 
 3. Web Scraping Scheduler:
-  - Developed a web scraper to collect news articles from AP News and CNA.
-  - Implemented a scheduling mechanism to run the scraper weekly.
-  - Processed and stored the scraped articles in a MongoDB database, ensuring no duplicates.
+
+- Developed a web scraper to collect news articles from AP News and CNA.
+- Implemented a scheduling mechanism to run the scraper weekly.
+- Processed and stored the scraped articles in a MongoDB database, ensuring no duplicates.
 
 4. PDF Processing:
-  - Created a function to extract text from uploaded PDFs using Tesseract OCR.
-  - Developed an entity extraction pipeline to identify and store relevant entities in the knowledge graph.
-  - Allowed users to upload PDFs through the chatbot interface.
+
+- Created a function to extract text from uploaded PDFs using Tesseract OCR.
+- Developed an entity extraction pipeline to identify and store relevant entities in the knowledge graph.
+- Allowed users to upload PDFs through the chatbot interface.
 
 5. Web Search Functionality:
-  - Configured the LLM to perform web searches if the knowledge graph does not contain sufficient information to answer a user query.
-  - Extracted relevant information from the web search results and included it in the chatbot response.
+
+- Configured the LLM to perform web searches if the knowledge graph does not contain sufficient information to answer a user query.
+- Extracted relevant information from the web search results and included it in the chatbot response.
 
 ## Challenges Faced
 
@@ -88,11 +99,14 @@ Throughout the course of this project, we learned several key lessons:
 
 Before running the application, make sure that you have all prior dependencies installed (python, panel, pymupdf, langchain, openai, etc), and that you have a mongodb atlas account, an openAI API key, and a neo4J instance set up.
 
-1.	Clone the repository to your local machine.
+1. Clone the repository to your local machine.
+
 ```bash
 git clone https://github.com/tristantanjh/2waffles.git
 ```
-3.	Create a `.env` file in the root directory.
+
+3. Create a `.env` file in the root directory.
+
 ```bash
 OPENAI_API_KEY=<YOUR_API_KEY>
 NEO4J_URI=<YOUR_URI>
@@ -100,5 +114,6 @@ NEO4J_USERNAME=<YOUR_INSTANCE_USERNAME>
 NEO4J_PASSWORD=<YOUR_INSTANCE_PASSWORD>
 MONGO_PASSWORD=<YOUR_MONGODB_PASSWORD>
 ```
-4.	Run `panel serve app.py` in your cmd for this environment.
-5.  Visit `http://localhost:5006/app?theme=default` to explore the application!
+
+4. Run `panel serve app.py` in your cmd for this environment.
+5. Visit `http://localhost:5006/app?theme=default` to explore the application!
