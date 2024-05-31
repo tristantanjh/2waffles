@@ -200,17 +200,17 @@ chat_interface = pn.chat.ChatInterface(
     ),
     height=700,
     callback_exception="verbose",
-    widgets=[pn.chat.ChatAreaInput(placeholder="Enter some text to get a count!")],
+    widgets=[pn.chat.ChatAreaInput(placeholder="Ask me anything about terrorism.")],
 )
 
 main = [chat_interface]
 
 template = pn.template.FastListTemplate(
-    title="Know about terrorism",
+    title="TerroGraph",
     main=main,
     sidebar=["## Upload PDF", pdf_input, button],
     main_layout=None,
-    accent_base_color="#fd7000",
-    header_background="#fd7000",
+    accent_base_color="#6d449e",
+    header_background="#6d449e",
 )
 template.servable()
