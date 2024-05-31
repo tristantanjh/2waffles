@@ -2,6 +2,8 @@
 
 # LifeHack 2024 - TerroGraph
 
+![cover img](./assets/cover.png)
+
 ### Team Members
 
 - [Tristan Tan](https://github.com/tristantanjh)
@@ -60,19 +62,26 @@ Our project leverages LLMs (OpenAI) and Neo4j's knowledge graphs to create a com
 - Configured the model to retrieve relevant nodes and relationships from the Neo4j database.
 - Set up the LLM to generate responses based on the retrieved information.
 
-3. Web Scraping Scheduler:
+3. LangGraph Routing
+
+- Using LangChain's Langgraph API, we implemented agent-based routing for different LLM outputs.
+<p align="center">
+  <img src="/assets/workflow.png" alt="workflow" title="Workflow" align="center" height="250" />
+</p>
+
+4. Web Scraping Scheduler:
 
 - Developed a web scraper to collect news articles from AP News and CNA.
 - Implemented a scheduling mechanism to run the scraper weekly.
-- Processed and stored the scraped articles in a MongoDB database, ensuring no duplicates.
+- Processed and indexed the scraped articles in a MongoDB database to ensure no duplicates.
 
-4. PDF Processing:
+5. PDF Processing:
 
 - Created a function to extract text from uploaded PDFs using Tesseract OCR.
 - Developed an entity extraction pipeline to identify and store relevant entities in the knowledge graph.
 - Allowed users to upload PDFs through the chatbot interface.
 
-5. Web Search Functionality:
+6. Web Search Functionality:
 
 - Configured the LLM to perform web searches if the knowledge graph does not contain sufficient information to answer a user query.
 - Extracted relevant information from the web search results and included it in the chatbot response.
