@@ -15,21 +15,18 @@
 
 ### Video Demo Link: 
 
----
-
 ## Table of Contents
 - [Project Details](#project-details)
 - [Features](#features)
 - [How We Did It](#how-we-did-it)
 - [Challenges Faced](#challenges-faced)
 - [What We Learnt](#what-we-learnt)
+- [Installation](#installation)
 
 ## Project Details
 Reports and articles on terrorism usually contain a lot of text, which are unstructured and difficult to resolve across reports in an automated fashion. For instance, linking articles about a terror incident, all coming in at different times in a day with varying details, can be challenging. Each report contains entities (Person, Object, Location, Events) that could be represented in a knowledge graph and accessed through a chatbot. TerroGraph aims to design and implement a Large Language Model (LLM) that can extract entities from reports into a knowledge graph, and an LLM that can answer questions based on the generated knowledge graph.
 
 _Made for NUS' LifeHack 2024 - Theme 3, Subtheme 2._
-
----
 
 ## Features
 
@@ -86,3 +83,22 @@ Throughout the course of this project, we learned several key lessons:
 - LLM Integration: Integrating LLMs with knowledge graphs can significantly enhance the ability to retrieve and generate relevant responses, demonstrating the power of combining different AI technologies.
 - Web Scraping: Developing a reliable and efficient web scraping system taught us the importance of handling various edge cases and ensuring data quality.
 - Scheduling and Automation: Implementing scheduling mechanisms for periodic tasks (like web scraping) highlighted the importance of automation in maintaining an up-to-date knowledge base.
+
+## Installation
+
+Before running the application, make sure that you have all prior dependencies installed (python, panel, pymupdf, langchain, openai, etc), and that you have a mongodb atlas account, an openAI API key, and a neo4J instance set up.
+
+1.	Clone the repository to your local machine.
+```bash
+git clone https://github.com/tristantanjh/2waffles.git
+```
+3.	Create a `.env` file in the root directory.
+```bash
+OPENAI_API_KEY=<YOUR_API_KEY>
+NEO4J_URI=<YOUR_URI>
+NEO4J_USERNAME=<YOUR_INSTANCE_USERNAME>
+NEO4J_PASSWORD=<YOUR_INSTANCE_PASSWORD>
+MONGO_PASSWORD=<YOUR_MONGODB_PASSWORD>
+```
+4.	Run `panel serve app.py` in your cmd for this environment.
+5.  Visit `http://localhost:5006/app?theme=default` to explore the application!
