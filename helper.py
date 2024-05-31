@@ -1,3 +1,4 @@
+import pytesseract.pytesseract
 from dotenv import load_dotenv
 from typing_extensions import TypedDict
 import os
@@ -20,9 +21,6 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_community.graphs import Neo4jGraph
 from langchain.text_splitter import TokenTextSplitter
 from langchain_openai import ChatOpenAI
-from langchain_experimental.graph_transformers import LLMGraphTransformer
-from neo4j import GraphDatabase
-from yfiles_jupyter_graphs import GraphWidget
 from langchain_community.vectorstores import Neo4jVector
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores.neo4j_vector import remove_lucene_chars
@@ -54,11 +52,12 @@ LOG_CONFIG = {
         }
     }
 }
+pytesseract.pytesseract.tesseract_cmd = "C:\\Users\\User\\PycharmProjects\python311venv\Lib\site-packages\\tesseract-ocr\Tesseract-OCR\\tesseract.exe"
 
 logging.config.dictConfig(LOG_CONFIG)
 logger = logging.getLogger("waffles_logger")
 
-
+logger.info("NEO URL: " + os.environ["NEO4J_URI"])
 graph = Neo4jGraph()
 llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
 
@@ -161,6 +160,7 @@ def retriever(question: str):
         Unstructured data:
         {"#Document ". join(unstructured_data)}
     """
+    logger.info(final_data)
     return final_data
 
 _template = """Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question,
@@ -195,6 +195,10 @@ _search_query = RunnableBranch(
     RunnableLambda(lambda x : x["question"]),
 )
 
+def update_pdf_context(paragraph):
+    global pdf_context
+    pdf_context = paragraph
+
 template = """Answer the question based only on the following context:
 {context}
 
@@ -212,6 +216,9 @@ Do not mention "structured data", "provided context", "context" in your answer. 
 Give your answer in prose, and avoid bullet points or lists in your response. The answer should be detailed and in paragraph form, providing a comprehensive explanation of the topic based on the context provided.
 
 Answer:"""
+
+
+
 prompt = ChatPromptTemplate.from_template(template)
 
 chain = (
@@ -225,6 +232,25 @@ chain = (
     | llm
     | StrOutputParser()
 )
+
+def update_pdf_context(paragraph):
+    global chain
+    template = "Answer the question based only on the following context: " + paragraph + """ {context}
+Question: {question}
+Use natural language and be as elaborate as possible.
+Answer:"""
+    prompt = ChatPromptTemplate.from_template(template)
+    chain = (
+            RunnableParallel(
+                {
+                    "context": _search_query | retriever,
+                    "question": RunnablePassthrough(),
+                }
+            )
+            | prompt
+            | llm
+            | StrOutputParser()
+    )
 
 def get_graph():
     return graph
