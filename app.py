@@ -64,30 +64,6 @@ LOG_CONFIG = {
 logging.config.dictConfig(LOG_CONFIG)
 logger = logging.getLogger("waffles_logger")
 
-default_cypher = "MATCH (s)-[r:!MENTIONS]->(t) RETURN s,r,t LIMIT 50"
-
-_template = """Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question,
-in its original language.
-Chat History:
-{chat_history}
-Follow Up Input: {question}
-Standalone question:"""  # noqa: E501
-CONDENSE_QUESTION_PROMPT = PromptTemplate.from_template(_template)
-
-
-
-# def extract_text_from_pdf(file_name):
-#     loader = PyPDFLoader(file_name)
-#     documents = loader.load()
-#     text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=10)
-#     docs = text_splitter.split_documents(documents)
-#     return docs
-#
-# def process_and_store_text(file_name, llm_transformer, graph):
-#     documents = extract_text_from_pdf(file_name)
-#     graph_documents = llm_transformer.convert_to_graph_documents(documents)
-#     graph.add_graph_documents(graph_documents, baseEntityLabel=True, include_source=True)
-
 def extract_text_from_pdf(file_name):
     text = ""
     doc = fitz.open(file_name)
@@ -141,12 +117,18 @@ def handle_click(event):
     if not event:
         return
     if pdf_input.value is not None:
+        spinner.value = True
+        spinner.name = "Uploading PDF..."
+        chat_area_input.disabled = True
         hp.logger.info(f"Processing pdf {str(pdf_input)}")
         pdf_input.save("test.pdf")
         text = extract_text_from_pdf("test.pdf")
         clean_text = generate_body_text(text, llm)
         process_and_store_text(clean_text, llm_transformer, graph)
         hp.logger.info(f"Finished processing pdf")
+        chat_area_input.disabled = False
+        spinner.name = ""
+        spinner.value = False
 
 def extract_text_from_pdf(file_name):
     text = ""
@@ -227,7 +209,13 @@ pdf_input = pn.widgets.FileInput(name="PDF File", accept=".pdf")
 
 button = pn.widgets.Button(name='Submit PDF', button_type='primary')
 
+spinner = pn.indicators.LoadingSpinner(value=False, name="", size=30)
+
+
+
 pn.bind(handle_click, button, watch=True)
+
+chat_area_input = pn.chat.ChatAreaInput(placeholder="Ask me anything about terrorism.", disabled=False)
 
 chat_interface = pn.chat.ChatInterface(
     callback=handle_question,
@@ -240,17 +228,22 @@ chat_interface = pn.chat.ChatInterface(
     ),
     height=700,
     callback_exception="verbose",
-    widgets=[pn.chat.ChatAreaInput(placeholder="Ask me anything about terrorism.")],
+    widgets=[chat_area_input],
 )
 
 main = [chat_interface]
 
 template = pn.template.FastListTemplate(
-    title="TerroGraph",
+    title='Unmasking terrorism',
     main=main,
-    sidebar=["## Upload PDF", pdf_input, button],
+    sidebar=["## Upload PDF", pdf_input, button, spinner],
     main_layout=None,
     accent_base_color="#6d449e",
     header_background="#6d449e",
+    logo="./assets/logo2.png"
 )
+
+template.modal.append("## Submited PDF")
+template.open_modal()
+
 template.servable()
