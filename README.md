@@ -1,4 +1,6 @@
-# LifeHack 2024 - 2 Waffles
+<img src="/assets/logo.png" alt="TerroGraph logo" title="TerroGraph" align="right" height="60" />
+
+# LifeHack 2024 - TerroGraph
 
 ## Team Members
 
@@ -7,7 +9,9 @@
 - [Joshau Goh](https://github.com/joshuagohez)
 - [Qu Zhetao](https://github.com/quzhetao01)
 
-### Website Link: 
+### Group Details
+- Group Name: 2 Waffles
+- Project Name: TerroGraph
 
 ### Video Demo Link: 
 
@@ -17,10 +21,11 @@
 - [Project Details](#project-details)
 - [Features](#features)
 - [How We Did It](#how-we-did-it)
+- [Challenges Faced](#challenges-faced)
 - [What We Learnt](#what-we-learnt)
 
 ## Project Details
-Reports and articles on terrorism usually contain a lot of text, which are unstructured and difficult to resolve across reports in an automated fashion. For instance, linking articles about a terror incident, all coming in at different times in a day with varying details, can be challenging. Each report contains entities (Person, Object, Location, Events) that could be represented in a knowledge graph and accessed through a chatbot. This project aims to design and implement a Large Language Model (LLM) that can extract entities from reports into a knowledge graph, and an LLM that can answer questions based on the generated knowledge graph.
+Reports and articles on terrorism usually contain a lot of text, which are unstructured and difficult to resolve across reports in an automated fashion. For instance, linking articles about a terror incident, all coming in at different times in a day with varying details, can be challenging. Each report contains entities (Person, Object, Location, Events) that could be represented in a knowledge graph and accessed through a chatbot. TerroGraph aims to design and implement a Large Language Model (LLM) that can extract entities from reports into a knowledge graph, and an LLM that can answer questions based on the generated knowledge graph.
 
 _Made for NUS' LifeHack 2024 - Theme 3, Subtheme 2._
 
@@ -64,6 +69,14 @@ Our project leverages LLMs (OpenAI) and Neo4j's knowledge graphs to create a com
   - Configured the LLM to perform web searches if the knowledge graph does not contain sufficient information to answer a user query.
   - Extracted relevant information from the web search results and included it in the chatbot response.
 
+## Challenges Faced
+
+We faced numerous challenges in the process of this project. Here's what we encountered:
+
+- Finding a Proper Prompt: crafting an appropriate prompt for the language model to generate relevant and accurate responses was difficult. Defining the right level of specificity and context was crucial to ensure the model could effectively leverage the knowledge graph and external information sources.
+- Data Preprocessing: Preprocessing the data from various sources, including PDF files and web articles, presented its own set of challenges. We had to handle different file formats, extract relevant information, and clean the data to ensure consistency and accuracy before populating the knowledge graph.
+- Finding the Proper Technologies: Selecting the right technologies and tools for each component of the project was a non-trivial task. We evaluated various options for knowledge graph databases, language models, web scraping libraries, and other tools before settling on the final tech stack that met our requirements.
+
 ## What We Learnt
 
 Throughout the course of this project, we learned several key lessons:
@@ -73,5 +86,3 @@ Throughout the course of this project, we learned several key lessons:
 - LLM Integration: Integrating LLMs with knowledge graphs can significantly enhance the ability to retrieve and generate relevant responses, demonstrating the power of combining different AI technologies.
 - Web Scraping: Developing a reliable and efficient web scraping system taught us the importance of handling various edge cases and ensuring data quality.
 - Scheduling and Automation: Implementing scheduling mechanisms for periodic tasks (like web scraping) highlighted the importance of automation in maintaining an up-to-date knowledge base.
-
-
