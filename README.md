@@ -2,6 +2,15 @@
 
 # LifeHack 2024 - TerroGraph
 
+<div>
+
+<img src="https://img.shields.io/badge/neo4j-4581C3?style=flat-square&logo=neo4j&logoColor=61DAFB" alt="neo4j">
+<img src="https://img.shields.io/badge/python-3776AB?style=flat-square&logo=python&logoColor=white" alt="python">
+<img src="https://img.shields.io/badge/openai-black?style=flat-square&logo=openai&logoColor=white" alt="Three.js">
+<img src="https://img.shields.io/badge/mongodb-47A248?style=flat-square&logo=mongodb&logoColor=white" alt="mongodb">
+
+</div>
+
 ![cover img](./assets/cover.png)
 
 ### Team Members
@@ -114,7 +123,7 @@ Before running the application, make sure that you have all prior dependencies i
 git clone https://github.com/tristantanjh/2waffles.git
 ```
 
-3. Create a `.env` file in the root directory.
+2. Create a `.env` file in the root directory.
 
 ```bash
 OPENAI_API_KEY=<YOUR_API_KEY>
@@ -124,5 +133,5 @@ NEO4J_PASSWORD=<YOUR_INSTANCE_PASSWORD>
 MONGO_PASSWORD=<YOUR_MONGODB_PASSWORD>
 ```
 
-4. Run `panel serve app.py` in your cmd for this environment.
-5. Visit `http://localhost:5006/app?theme=default` to explore the application!
+3. Run `panel serve app.py` in your cmd for this environment.
+4. Visit `http://localhost:5006/app?theme=default` to explore the application!
