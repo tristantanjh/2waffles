@@ -234,16 +234,16 @@ chat_interface = pn.chat.ChatInterface(
 main = [chat_interface]
 
 template = pn.template.FastListTemplate(
-    title='Unmasking terrorism',
+    title='TerroGraph',
     main=main,
     sidebar=["## Upload PDF", pdf_input, button, spinner],
     main_layout=None,
     accent_base_color="#6d449e",
     header_background="#6d449e",
-    logo="./assets/logo2.png"
+    logo="./assets/logo3.png"
 )
 
-template.modal.append("## Submited PDF")
+template.modal.append("## Submitted PDF")
 template.open_modal()
 
 template.servable()
