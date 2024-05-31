@@ -177,6 +177,7 @@ llm_transformer = LLMGraphTransformer(llm=llm)
 chat_history = []
 
 def handle_question(contents, user, instance):
+    global chat_history
     logger.info("A question is asked: " + contents)
     local_agent = hp.build_workflow()
     answer = hp.run_agent(contents, local_agent, chat_history)
