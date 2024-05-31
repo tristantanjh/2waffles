@@ -122,11 +122,11 @@ def structured_retriever(question: str) -> str:
             YIELD node, score
             CALL {
               WITH node
-              MATCH (node)-[r:MENTIONS]->(neighbor)
+              MATCH (node)-[r:!MENTIONS]->(neighbor)
               RETURN node.id + ' - ' + type(r) + ' -> ' + neighbor.id AS output
               UNION ALL
               WITH node
-              MATCH (node)<-[r:MENTIONS]-(neighbor)
+              MATCH (node)<-[r:!MENTIONS]-(neighbor)
               RETURN neighbor.id + ' - ' + type(r) + ' -> ' + node.id AS output
             }
             RETURN output LIMIT 50
