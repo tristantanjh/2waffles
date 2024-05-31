@@ -4,7 +4,7 @@
 
 ![cover img](./assets/cover.png)
 
-## Team Members
+### Team Members
 
 - [Tristan Tan](https://github.com/tristantanjh)
 - [Oscar Qian](https://github.com/oscarqjh)
