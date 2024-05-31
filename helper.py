@@ -1,3 +1,4 @@
+import pytesseract.pytesseract
 from dotenv import load_dotenv
 import os
 from langchain_core.runnables import (
@@ -15,9 +16,6 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_community.graphs import Neo4jGraph
 from langchain.text_splitter import TokenTextSplitter
 from langchain_openai import ChatOpenAI
-from langchain_experimental.graph_transformers import LLMGraphTransformer
-from neo4j import GraphDatabase
-from yfiles_jupyter_graphs import GraphWidget
 from langchain_community.vectorstores import Neo4jVector
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores.neo4j_vector import remove_lucene_chars
@@ -49,11 +47,12 @@ LOG_CONFIG = {
         }
     }
 }
+pytesseract.pytesseract.tesseract_cmd = "C:\\Users\\User\\PycharmProjects\python311venv\Lib\site-packages\\tesseract-ocr\Tesseract-OCR\\tesseract.exe"
 
 logging.config.dictConfig(LOG_CONFIG)
 logger = logging.getLogger("waffles_logger")
 
-
+logger.info("NEO URL: " + os.environ["NEO4J_URI"])
 graph = Neo4jGraph()
 llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
 
@@ -122,11 +121,11 @@ def structured_retriever(question: str) -> str:
             YIELD node, score
             CALL {
               WITH node
-              MATCH (node)-[r:MENTIONS]->(neighbor)
+              MATCH (node)-[r:!MENTIONS]->(neighbor)
               RETURN node.id + ' - ' + type(r) + ' -> ' + neighbor.id AS output
               UNION ALL
               WITH node
-              MATCH (node)<-[r:MENTIONS]-(neighbor)
+              MATCH (node)<-[r:!MENTIONS]-(neighbor)
               RETURN neighbor.id + ' - ' + type(r) + ' -> ' + node.id AS output
             }
             RETURN output LIMIT 50
@@ -145,6 +144,7 @@ def retriever(question: str):
         Unstructured data:
         {"#Document ". join(unstructured_data)}
     """
+    logger.info(final_data)
     return final_data
 
 _template = """Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question,
@@ -179,12 +179,19 @@ _search_query = RunnableBranch(
     RunnableLambda(lambda x : x["question"]),
 )
 
+def update_pdf_context(paragraph):
+    global pdf_context
+    pdf_context = paragraph
+
 template = """Answer the question based only on the following context:
 {context}
 
 Question: {question}
 Use natural language and be as elaborate as possible.
 Answer:"""
+
+
+
 prompt = ChatPromptTemplate.from_template(template)
 
 chain = (
@@ -198,6 +205,25 @@ chain = (
     | llm
     | StrOutputParser()
 )
+
+def update_pdf_context(paragraph):
+    global chain
+    template = "Answer the question based only on the following context: " + paragraph + """ {context}
+Question: {question}
+Use natural language and be as elaborate as possible.
+Answer:"""
+    prompt = ChatPromptTemplate.from_template(template)
+    chain = (
+            RunnableParallel(
+                {
+                    "context": _search_query | retriever,
+                    "question": RunnablePassthrough(),
+                }
+            )
+            | prompt
+            | llm
+            | StrOutputParser()
+    )
 
 def get_graph():
     return graph
@@ -223,104 +249,5 @@ def invoke_chain(question: str, chat_history):
                 "question": question,
             }
         )
-# class Rag:
-#
-#     def __init__(self, graph, llm):
-#         self.graph = graph
-#         self.llm = llm
-#         self.vector_index = Neo4jVector.from_existing_graph(
-#             OpenAIEmbeddings(),
-#             search_type="hybrid",
-#             node_label="Document",
-#             text_node_properties=["text"],
-#             embedding_node_property="embedding"
-#         )
-#         self.entity = None
-#
-#     def handleQuestion(self, question):
-#         self.graph.query(
-#             "CREATE FULLTEXT INDEX entity IF NOT EXISTS FOR (e:__Entity__) ON EACH [e.id]")
-#
-#         # Extract entities from text
-#         class Entities(BaseModel):
-#             """Identifying information about entities."""
-#
-#             names: List[str] = Field(
-#                 ...,
-#                 description="All the person, organization, or business entities that "
-#                 "appear in the text",
-#             )
-#
-#         prompt = ChatPromptTemplate.from_messages(
-#             [
-#                 (
-#                     "system",
-#                     "You are extracting organization and person entities from the text.",
-#                 ),
-#                 (
-#                     "human",
-#                     "Use the given format to extract information from the following "
-#                     "input: {question}",
-#                 ),
-#             ]
-#         )
-#
-#         self.entity_chain = prompt | self.llm.with_structured_output(Entities)
-#
-#     def generate_full_text_query(self, input: str) -> str:
-#         """
-#         Generate a full-text search query for a given input string.
-#
-#         This function constructs a query string suitable for a full-text search.
-#         It processes the input string by splitting it into words and appending a
-#         similarity threshold (~2 changed characters) to each word, then combines
-#         them using the AND operator. Useful for mapping entities from user questions
-#         to database values, and allows for some misspelings.
-#         """
-#         full_text_query = ""
-#         words = [el for el in remove_lucene_chars(input).split() if el]
-#         for word in words[:-1]:
-#             full_text_query += f" {word}~2 AND"
-#         full_text_query += f" {words[-1]}~2"
-#         return full_text_query.strip()
-#
-#     # Fulltext index query
-#     def structured_retriever(self, question: str) -> str:
-#         """
-#         Collects the neighborhood of entities mentioned
-#         in the question
-#         """
-#         result = ""
-#         entities = self.entity_chain.invoke({"question": question})
-#         for entity in entities.names:
-#             response = self.graph.query(
-#                 """CALL db.index.fulltext.queryNodes('entity', $query, {limit:2})
-#                 YIELD node,score
-#                 CALL {
-#                   WITH node
-#                   MATCH (node)-[r:!MENTIONS]->(neighbor)
-#                   RETURN node.id + ' - ' + type(r) + ' -> ' + neighbor.id AS output
-#                   UNION ALL
-#                   WITH node
-#                   MATCH (node)<-[r:!MENTIONS]-(neighbor)
-#                   RETURN neighbor.id + ' - ' + type(r) + ' -> ' +  node.id AS output
-#                 }
-#                 RETURN output LIMIT 50
-#                 """,
-#                 {"query": self.generate_full_text_query(entity)},
-#             )
-#             result += "\n".join([el['output'] for el in response])
-#         return result
-#
-#     def retriever(self, question: str):
-#         print(f"Search query: {question}")
-#         structured_data = self.structured_retriever(question)
-#         unstructured_data = [el.page_content for el in self.vector_index.similarity_search(question)]
-#         final_data = f"""Structured data:
-#             {structured_data}
-#             Unstructured data:
-#             {"#Document ".join(unstructured_data)}
-#         """
-#         return final_data
 
 
