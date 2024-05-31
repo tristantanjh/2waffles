@@ -1,4 +1,5 @@
 from dotenv import load_dotenv
+from typing_extensions import TypedDict
 import os
 from langchain_core.runnables import (
     RunnableBranch,
@@ -6,6 +7,10 @@ from langchain_core.runnables import (
     RunnableParallel,
     RunnablePassthrough,
 )
+from langchain_core.output_parsers import JsonOutputParser, StrOutputParser
+from langchain_community.tools import DuckDuckGoSearchRun, BingSearchRun
+from langchain_community.utilities import DuckDuckGoSearchAPIWrapper, BingSearchAPIWrapper
+from langgraph.graph import END, StateGraph
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.prompts.prompt import PromptTemplate
 from langchain_core.pydantic_v1 import BaseModel, Field
@@ -134,6 +139,17 @@ def structured_retriever(question: str) -> str:
             {"query": generate_full_text_query(entity)},
         )
         result += "\n".join([el['output'] for el in response])
+
+    result_list = result.split("\n")
+    counter = 0
+    for entity in entities.names:
+        print("Entity:" + entity)
+        for i in range(len(result_list)):
+            print(result_list[i])
+            if entity.lower() in result_list[i].lower():
+                counter += 1
+    if counter == 0:
+        result = ""
     return result
 
 def retriever(question: str):
@@ -223,6 +239,205 @@ def invoke_chain(question: str, chat_history):
                 "question": question,
             }
         )
+    
+########################################################### Web Search Tool ###########################################################
+wrapper = DuckDuckGoSearchAPIWrapper(max_results=25)
+web_search_tool = DuckDuckGoSearchRun(api_wrapper=wrapper)
+
+########################################################### Query Transformation ###########################################################
+query_prompt = ChatPromptTemplate.from_messages(
+    [
+        ("system", """
+            You are an expert at crafting web search queries for research questions.
+            More often than not, a user will ask a basic question that they wish to learn more about, however it might not be in the best format. 
+            Reword their query to be the most effective web search string possible.
+            Return the JSON with a single key 'query' with no premable or explanation. 
+            
+            Question to transform: {question} 
+         """)
+    ]
+)
+
+# Chain
+query_chain = query_prompt | llm | JsonOutputParser()
+
+generate_prompt = ChatPromptTemplate.from_messages(
+    [
+        ("system", """
+            You are an AI assistant for Research Question Tasks, that synthesizes web search results. 
+            Strictly use the following pieces of web search context to answer the question. If you don't know the answer, just say that you don't know. 
+            keep the answer concise, but provide all of the details you can in the form of a research report. 
+            Only make direct references to material if provided in the context.
+         """),
+         ("human", """
+            Given the following context, answer the question as best as you can.
+            Context: {context}
+            Question: {question}
+         """)
+    ]
+)
+
+# Chain
+generate_chain = generate_prompt | llm | StrOutputParser()
+
+############################################################# Graph State #############################################################
+class GraphState(TypedDict):
+    """
+    Represents the state of our graph.
+
+    Attributes:
+        question: question
+        generation: LLM generation
+        search_query: revised question for web search
+        context: web_search result
+    """
+    question : str
+    generation : str
+    search_query : str
+    context : str
+    history: List[Tuple[str, str]]
+
+# Node - Generate
+
+def generate(state):
+    """
+    Generate answer
+
+    Args:
+        state (dict): The current graph state
+
+    Returns:
+        state (dict): New key added to state, generation, that contains LLM generation
+    """
+    
+    print("Step: Generating Final Response")
+    question = state["question"]
+    history = state["history"]
+
+    # Answer Generation
+    generation = invoke_chain(question, history)
+    return {"generation": generation}
+
+def generate_for_web(state):
+    """
+    Generate answer
+
+    Args:
+        state (dict): The current graph state
+
+    Returns:
+        state (dict): New key added to state, generation, that contains LLM generation
+    """
+    
+    print("Step: Generating Final Response")
+    question = state["question"]
+    context = state["context"]
+
+    # Answer Generation
+    generation = generate_chain.invoke({"question": question, "context": context})
+    return {"generation": generation}
+
+# Node - Query Transformation
+
+def transform_query(state):
+    """
+    Transform user question to web search
+
+    Args:
+        state (dict): The current graph state
+
+    Returns:
+        state (dict): Appended search query
+    """
+    
+    print("Step: Optimizing Query for Web Search")
+    question = state['question']
+    gen_query = query_chain.invoke({"question": question})
+    search_query = gen_query["query"]
+    return {"search_query": search_query}
+
+
+# Node - Web Search
+
+def web_search(state):
+    """
+    Web search based on the question
+
+    Args:
+        state (dict): The current graph state
+
+    Returns:
+        state (dict): Appended web results to context
+    """
+
+    search_query = state['search_query']
+    print(f'Step: Searching the Web for: "{search_query}"')
+    
+    # Web search tool call
+    search_result = web_search_tool.invoke(search_query)
+    return {"context": search_result}
+
+
+# Conditional Edge, Routing
+
+def route_question(state):
+    """
+    route question to web search or generation.
+
+    Args:
+        state (dict): The current graph state
+
+    Returns:
+        str: Next node to call
+    """
+
+    print("Step: Routing Query")
+    question = state['question']
+    structured_data = structured_retriever(question)
+
+    print(f"Structured Data: {structured_data}")
+    
+    if len(structured_data) != 0:
+        print("Step: Context Found, Routing to Generation")
+        return "generate"
+    elif len(structured_data) == 0:
+        print("Step: Context Not Found, Routing to Web Search")
+        return "websearch"
+    
+def build_workflow():
+    """
+    Build the workflow for the graph
+    """
+    # Build the nodes
+    workflow = StateGraph(GraphState)
+    workflow.add_node("websearch", web_search)
+    workflow.add_node("transform_query", transform_query)
+    workflow.add_node("generate", generate)
+    workflow.add_node("generate_for_web", generate_for_web)
+
+    # Build the edges
+    workflow.set_conditional_entry_point(
+        route_question,
+        {
+            "websearch": "transform_query",
+            "generate": "generate",
+        },
+    )
+    workflow.add_edge("transform_query", "websearch")
+    workflow.add_edge("websearch", "generate_for_web")
+    workflow.add_edge("generate", END)
+    workflow.add_edge("generate_for_web", END)
+
+    # Compile the workflow
+    local_agent = workflow.compile()
+
+    return local_agent
+
+def run_agent(query, local_agent, chat_history):
+    output = local_agent.invoke({"question": query, "history": chat_history})
+    return output['generation']
+
+
 # class Rag:
 #
 #     def __init__(self, graph, llm):

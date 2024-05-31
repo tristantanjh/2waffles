@@ -178,7 +178,8 @@ chat_history = []
 
 def handle_question(contents, user, instance):
     logger.info("A question is asked: " + contents)
-    answer = hp.invoke_chain(contents, chat_history)
+    local_agent = hp.build_workflow()
+    answer = hp.run_agent(contents, local_agent, chat_history)
     chat_history.append((contents, answer))
     return answer
 
