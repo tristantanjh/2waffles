@@ -65,6 +65,10 @@ Our project leverages LLMs (OpenAI) and Neo4j's knowledge graphs to create a com
 - Processed the data to extract entities and relationships.
 - Populated the Neo4j knowledge graph with the preprocessed data.
 
+<p align="center">
+  <img src="/assets/graph.jpg" alt="graph" title="graph" align="center" height="250" />
+</p>
+
 2. RAG Model Implementation:
 
 - Integrated a Retrieval-Augmented Generation model to handle user queries.
