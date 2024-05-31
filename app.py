@@ -177,9 +177,10 @@ llm_transformer = LLMGraphTransformer(llm=llm)
 chat_history = []
 
 def handle_question(contents, user, instance):
+    global chat_history
     logger.info("A question is asked: " + contents)
     answer = hp.invoke_chain(contents, chat_history)
-    chat_history.append((contents, answer))
+    chat_history = [(contents, answer)]
     return answer
 
 pdf_input = pn.widgets.FileInput(name="PDF File", accept=".pdf")
