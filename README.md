@@ -65,8 +65,9 @@ Our project leverages LLMs (OpenAI) and Neo4j's knowledge graphs to create a com
 3. LangGraph Routing
 
 - Using LangChain's Langgraph API, we implemented agent-based routing for different LLM outputs.
-
-<img src="/assets/workflow.png" alt="workflow" title="Workflow" align="center" height="250" />
+<p align="center">
+  <img src="/assets/workflow.png" alt="workflow" title="Workflow" align="center" height="250" />
+</p>
 
 4. Web Scraping Scheduler:
 
