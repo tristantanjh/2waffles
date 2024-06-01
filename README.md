@@ -2,6 +2,8 @@
 
 # LifeHack 2024 - TerroGraph
 
+## _TerroGraph: Graph Your Way Out of Terror Confusion_ <br/>By 2Waffles
+
 <div>
 
 <img src="https://img.shields.io/badge/neo4j-4581C3?style=flat-square&logo=neo4j&logoColor=61DAFB" alt="neo4j">
@@ -40,13 +42,19 @@
 
 Reports and articles on terrorism usually contain a lot of text, which are unstructured and difficult to resolve across reports in an automated fashion. For instance, linking articles about a terror incident, all coming in at different times in a day with varying details, can be challenging. Each report contains entities (Person, Object, Location, Events) that could be represented in a knowledge graph and accessed through a chatbot. TerroGraph aims to design and implement a Large Language Model (LLM) that can extract entities from reports into a knowledge graph, and an LLM that can answer questions based on the generated knowledge graph.
 
-_Made for NUS' LifeHack 2024 - Theme 3, Subtheme 2._
+_Made for [NUS' LifeHack 2024](https://devpost.com/software/terrograph) - Theme 3, Subtheme 2._
+
+## Architecture
+
+![architecture diagram](/assets/architecture.jpg)
 
 ## Features
 
 Our project leverages LLMs (OpenAI) and Neo4j's knowledge graphs to create a comprehensive system for managing and querying information about terrorism incidents. The project consists of several key components:
 
 1. **User Interface**
+
+![UI img](./assets/UI.png)
 
 - Chatbot: The chatbot interface allows users to ask queries about terrorism. It retrieves relevant information from the Neo4j database and provides responses based on the knowledge graph.
 - PDF Uploader: Users can upload PDF files containing articles about terrorism. The system extracts text from the PDFs, processes the content to identify entities, and updates the knowledge graph accordingly.
@@ -61,6 +69,10 @@ Our project leverages LLMs (OpenAI) and Neo4j's knowledge graphs to create a com
 
 1. Knowledge Graph Prepopulation:
 
+<p align="center">
+  <img src="/assets/graph.jpg" alt="graph" title="graph" align="center" height="400" />
+</p>
+
 - Collected data from an online database of known terror attacks.
 - Processed the data to extract entities and relationships.
 - Populated the Neo4j knowledge graph with the preprocessed data.
@@ -73,10 +85,11 @@ Our project leverages LLMs (OpenAI) and Neo4j's knowledge graphs to create a com
 
 3. LangGraph Routing
 
-- Using LangChain's Langgraph API, we implemented agent-based routing for different LLM outputs.
 <p align="center">
   <img src="/assets/workflow.png" alt="workflow" title="Workflow" align="center" height="250" />
 </p>
+
+- Using LangChain's Langgraph API, we implemented agent-based routing for different LLM outputs.
 
 4. Web Scraping Scheduler:
 
@@ -115,7 +128,7 @@ Throughout the course of this project, we learned several key lessons:
 
 ## Installation
 
-Before running the application, make sure that you have all prior dependencies installed (python, panel, pymupdf, langchain, openai, etc), and that you have a mongodb atlas account, an openAI API key, and a neo4J instance set up.
+Before running the application, make sure that you have all prior dependencies installed (python, panel, pymupdf, langchain, openai, etc), and that you have a mongodb atlas account, an openAI API key, and a neo4jJ instance set up.
 
 1. Clone the repository to your local machine.
 
@@ -123,7 +136,12 @@ Before running the application, make sure that you have all prior dependencies i
 git clone https://github.com/tristantanjh/2waffles.git
 ```
 
-2. Create a `.env` file in the root directory.
+2. (Optional) Create either a python virtual environment or use Anaconda package manager to handle the dependencies required for this project.
+
+3. Install all required dependencies. A detailed list of dependencies can be found in `requirements.txt`.  
+   Special care have to be taken when installing _pytesseract_. Please refer to the installation guide for pytesseract on the official [github repo](https://github.com/UB-Mannheim/tesseract?tab=readme-ov-file).
+
+4. Create a `.env` file in the root directory.
 
 ```bash
 OPENAI_API_KEY=<YOUR_API_KEY>
@@ -133,5 +151,21 @@ NEO4J_PASSWORD=<YOUR_INSTANCE_PASSWORD>
 MONGO_PASSWORD=<YOUR_MONGODB_PASSWORD>
 ```
 
-3. Run `panel serve app.py` in your cmd for this environment.
-4. Visit `http://localhost:5006/app?theme=default` to explore the application!
+<dl>
+  <dd>
+    Note: You will have to populate the Neo4j database using 2 methods:     
+  
+    
+  </dd>
+</dl>
+<dl><dd><dl><dd>
+I. Load and import <code>/data/neo4j_model.json</code> together with <code>/data/globalterrorismdb_0522dist_short.csv</code> in the Neo4j dashboard.  
+</dl></dd></dl></dd>
+<dl><dd><dl><dd><dl>
+    II. Run <code>/notebooks/scrapper.ipynb</code> to scrap CNA and APNews for latest news on terrorism and populate Neo4j knowledge graph. 
+</dl></dd></dl></dd></dl>
+
+5. Run `panel serve app.py` in your cmd for this environment.
+6. Visit `http://localhost:5006/app` to explore the application!
+
+---

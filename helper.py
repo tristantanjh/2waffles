@@ -52,7 +52,7 @@ LOG_CONFIG = {
         }
     }
 }
-pytesseract.pytesseract.tesseract_cmd = "C:\\Users\\User\\PycharmProjects\python311venv\Lib\site-packages\\tesseract-ocr\Tesseract-OCR\\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 logging.config.dictConfig(LOG_CONFIG)
 logger = logging.getLogger("waffles_logger")

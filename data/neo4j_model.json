@@ -1,0 +1,3499 @@
+{
+  "version": "1.4.0",
+  "graph": {
+    "nodes": [
+      {
+        "id": "n0",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "caption": "Country"
+      },
+      {
+        "id": "n1",
+        "position": {
+          "x": 156.5,
+          "y": -197
+        },
+        "caption": "Event"
+      },
+      {
+        "id": "n2",
+        "position": {
+          "x": 156.5,
+          "y": 131
+        },
+        "caption": "Region"
+      },
+      {
+        "id": "n3",
+        "position": {
+          "x": 350.4627087244329,
+          "y": 67.50419207317074
+        },
+        "caption": "City"
+      },
+      {
+        "id": "n4",
+        "position": {
+          "x": 413.99293284218527,
+          "y": -64.74790396341461
+        },
+        "caption": "Location"
+      },
+      {
+        "id": "n5",
+        "position": {
+          "x": 482.9920006150162,
+          "y": -165.58386506261093
+        },
+        "caption": "Terrorist Group"
+      },
+      {
+        "id": "n6",
+        "position": {
+          "x": -154.4089805316268,
+          "y": -92.50308222351951
+        },
+        "caption": "Attack Type"
+      },
+      {
+        "id": "n7",
+        "position": {
+          "x": -37.16909888397487,
+          "y": -357.6036429769548
+        },
+        "caption": "Specific Target"
+      },
+      {
+        "id": "n8",
+        "position": {
+          "x": -220.25,
+          "y": -246.5
+        },
+        "caption": "Nationality"
+      },
+      {
+        "id": "n9",
+        "position": {
+          "x": -133.73047960376417,
+          "y": -651.8666211684632
+        },
+        "caption": "Motive"
+      },
+      {
+        "id": "n10",
+        "position": {
+          "x": 233.54153153363765,
+          "y": -537.2264147833589
+        },
+        "caption": "Weapon Type"
+      },
+      {
+        "id": "n11",
+        "position": {
+          "x": 380.4944652167252,
+          "y": -441.7717153940969
+        },
+        "caption": "Target Type"
+      },
+      {
+        "id": "n12",
+        "position": {
+          "x": -266.3685626262727,
+          "y": -387.2358936679451
+        },
+        "caption": "Weapon"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "n0",
+        "type": "MENTIONS",
+        "fromId": "n1",
+        "toId": "n0"
+      },
+      {
+        "id": "n1",
+        "type": "MENTIONS",
+        "fromId": "n1",
+        "toId": "n2"
+      },
+      {
+        "id": "n2",
+        "type": "LOCATION",
+        "fromId": "n0",
+        "toId": "n2"
+      },
+      {
+        "id": "n3",
+        "type": "MENTIONS",
+        "fromId": "n1",
+        "toId": "n3"
+      },
+      {
+        "id": "n4",
+        "type": "LOCATION",
+        "fromId": "n2",
+        "toId": "n3"
+      },
+      {
+        "id": "n5",
+        "type": "MENTIONS",
+        "fromId": "n1",
+        "toId": "n4"
+      },
+      {
+        "id": "n6",
+        "type": "LOCATION",
+        "fromId": "n3",
+        "toId": "n4"
+      },
+      {
+        "id": "n7",
+        "type": "MENTIONS",
+        "fromId": "n1",
+        "toId": "n5"
+      },
+      {
+        "id": "n8",
+        "type": "MENTIONS",
+        "fromId": "n1",
+        "toId": "n6"
+      },
+      {
+        "id": "n9",
+        "type": "MENTIONS",
+        "fromId": "n1",
+        "toId": "n7"
+      },
+      {
+        "id": "n10",
+        "type": "NATIONALITY",
+        "fromId": "n7",
+        "toId": "n8"
+      },
+      {
+        "id": "n11",
+        "type": "MENTIONS",
+        "fromId": "n1",
+        "toId": "n9"
+      },
+      {
+        "id": "n12",
+        "type": "MENTIONS",
+        "fromId": "n1",
+        "toId": "n10"
+      },
+      {
+        "id": "n14",
+        "type": "WEAPON",
+        "fromId": "n10",
+        "toId": "n12"
+      },
+      {
+        "id": "n15",
+        "type": "TYPE",
+        "fromId": "n7",
+        "toId": "n11"
+      }
+    ]
+  },
+  "dataModel": {
+    "version": "1.4.0",
+    "graphSchemaRepresentation": {
+      "version": "1.0.0",
+      "graphSchema": {
+        "nodeLabels": [
+          {
+            "$id": "nl:n0",
+            "token": "Country",
+            "properties": [
+              {
+                "$id": "p:1",
+                "token": "id",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n1",
+            "token": "Event",
+            "properties": [
+              {
+                "$id": "p:2",
+                "token": "id",
+                "type": {
+                  "type": "integer"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:3",
+                "token": "iyear",
+                "type": {
+                  "type": "integer"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:4",
+                "token": "imonth",
+                "type": {
+                  "type": "integer"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:5",
+                "token": "iday",
+                "type": {
+                  "type": "integer"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:6",
+                "token": "summary",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:19",
+                "token": "nkill",
+                "type": {
+                  "type": "float"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:20",
+                "token": "nkillus",
+                "type": {
+                  "type": "float"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:21",
+                "token": "nkillter",
+                "type": {
+                  "type": "float"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:22",
+                "token": "nwound",
+                "type": {
+                  "type": "float"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:23",
+                "token": "nwoundus",
+                "type": {
+                  "type": "float"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:24",
+                "token": "nwoundte",
+                "type": {
+                  "type": "float"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:25",
+                "token": "property",
+                "type": {
+                  "type": "integer"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n2",
+            "token": "Region",
+            "properties": [
+              {
+                "$id": "p:7",
+                "token": "id",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n3",
+            "token": "City",
+            "properties": [
+              {
+                "$id": "p:8",
+                "token": "id",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n4",
+            "token": "Location",
+            "properties": [
+              {
+                "$id": "p:9",
+                "token": "latitude",
+                "type": {
+                  "type": "float"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:10",
+                "token": "longitude",
+                "type": {
+                  "type": "float"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:11",
+                "token": "id",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n5",
+            "token": "Terrorist Group",
+            "properties": [
+              {
+                "$id": "p:12",
+                "token": "id",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n6",
+            "token": "Attack Type",
+            "properties": [
+              {
+                "$id": "p:13",
+                "token": "attacktype1_txt",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n7",
+            "token": "Specific Target",
+            "properties": [
+              {
+                "$id": "p:14",
+                "token": "id",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n8",
+            "token": "Nationality",
+            "properties": [
+              {
+                "$id": "p:15",
+                "token": "id",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n9",
+            "token": "Motive",
+            "properties": [
+              {
+                "$id": "p:16",
+                "token": "id",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n10",
+            "token": "Weapon Type",
+            "properties": [
+              {
+                "$id": "p:17",
+                "token": "id",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n11",
+            "token": "Target Type",
+            "properties": [
+              {
+                "$id": "p:26",
+                "token": "id",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:n12",
+            "token": "Weapon",
+            "properties": [
+              {
+                "$id": "p:18",
+                "token": "id",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          }
+        ],
+        "relationshipTypes": [
+          {
+            "$id": "rt:n0",
+            "token": "MENTIONS",
+            "properties": []
+          },
+          {
+            "$id": "rt:n1",
+            "token": "MENTIONS",
+            "properties": []
+          },
+          {
+            "$id": "rt:n2",
+            "token": "LOCATION",
+            "properties": []
+          },
+          {
+            "$id": "rt:n3",
+            "token": "MENTIONS",
+            "properties": []
+          },
+          {
+            "$id": "rt:n4",
+            "token": "LOCATION",
+            "properties": []
+          },
+          {
+            "$id": "rt:n5",
+            "token": "MENTIONS",
+            "properties": []
+          },
+          {
+            "$id": "rt:n6",
+            "token": "LOCATION",
+            "properties": []
+          },
+          {
+            "$id": "rt:n7",
+            "token": "MENTIONS",
+            "properties": []
+          },
+          {
+            "$id": "rt:n8",
+            "token": "MENTIONS",
+            "properties": []
+          },
+          {
+            "$id": "rt:n9",
+            "token": "MENTIONS",
+            "properties": []
+          },
+          {
+            "$id": "rt:n10",
+            "token": "NATIONALITY",
+            "properties": []
+          },
+          {
+            "$id": "rt:n11",
+            "token": "MENTIONS",
+            "properties": []
+          },
+          {
+            "$id": "rt:n12",
+            "token": "MENTIONS",
+            "properties": []
+          },
+          {
+            "$id": "rt:n14",
+            "token": "WEAPON",
+            "properties": []
+          },
+          {
+            "$id": "rt:n15",
+            "token": "TYPE",
+            "properties": []
+          }
+        ],
+        "nodeObjectTypes": [
+          {
+            "$id": "n:n0",
+            "labels": [
+              {
+                "$ref": "#nl:n0"
+              }
+            ]
+          },
+          {
+            "$id": "n:n1",
+            "labels": [
+              {
+                "$ref": "#nl:n1"
+              }
+            ]
+          },
+          {
+            "$id": "n:n2",
+            "labels": [
+              {
+                "$ref": "#nl:n2"
+              }
+            ]
+          },
+          {
+            "$id": "n:n3",
+            "labels": [
+              {
+                "$ref": "#nl:n3"
+              }
+            ]
+          },
+          {
+            "$id": "n:n4",
+            "labels": [
+              {
+                "$ref": "#nl:n4"
+              }
+            ]
+          },
+          {
+            "$id": "n:n5",
+            "labels": [
+              {
+                "$ref": "#nl:n5"
+              }
+            ]
+          },
+          {
+            "$id": "n:n6",
+            "labels": [
+              {
+                "$ref": "#nl:n6"
+              }
+            ]
+          },
+          {
+            "$id": "n:n7",
+            "labels": [
+              {
+                "$ref": "#nl:n7"
+              }
+            ]
+          },
+          {
+            "$id": "n:n8",
+            "labels": [
+              {
+                "$ref": "#nl:n8"
+              }
+            ]
+          },
+          {
+            "$id": "n:n9",
+            "labels": [
+              {
+                "$ref": "#nl:n9"
+              }
+            ]
+          },
+          {
+            "$id": "n:n10",
+            "labels": [
+              {
+                "$ref": "#nl:n10"
+              }
+            ]
+          },
+          {
+            "$id": "n:n11",
+            "labels": [
+              {
+                "$ref": "#nl:n11"
+              }
+            ]
+          },
+          {
+            "$id": "n:n12",
+            "labels": [
+              {
+                "$ref": "#nl:n12"
+              }
+            ]
+          }
+        ],
+        "relationshipObjectTypes": [
+          {
+            "$id": "r:n0",
+            "type": {
+              "$ref": "#rt:n0"
+            },
+            "from": {
+              "$ref": "#n:n1"
+            },
+            "to": {
+              "$ref": "#n:n0"
+            }
+          },
+          {
+            "$id": "r:n1",
+            "type": {
+              "$ref": "#rt:n1"
+            },
+            "from": {
+              "$ref": "#n:n1"
+            },
+            "to": {
+              "$ref": "#n:n2"
+            }
+          },
+          {
+            "$id": "r:n2",
+            "type": {
+              "$ref": "#rt:n2"
+            },
+            "from": {
+              "$ref": "#n:n0"
+            },
+            "to": {
+              "$ref": "#n:n2"
+            }
+          },
+          {
+            "$id": "r:n3",
+            "type": {
+              "$ref": "#rt:n3"
+            },
+            "from": {
+              "$ref": "#n:n1"
+            },
+            "to": {
+              "$ref": "#n:n3"
+            }
+          },
+          {
+            "$id": "r:n4",
+            "type": {
+              "$ref": "#rt:n4"
+            },
+            "from": {
+              "$ref": "#n:n2"
+            },
+            "to": {
+              "$ref": "#n:n3"
+            }
+          },
+          {
+            "$id": "r:n5",
+            "type": {
+              "$ref": "#rt:n5"
+            },
+            "from": {
+              "$ref": "#n:n1"
+            },
+            "to": {
+              "$ref": "#n:n4"
+            }
+          },
+          {
+            "$id": "r:n6",
+            "type": {
+              "$ref": "#rt:n6"
+            },
+            "from": {
+              "$ref": "#n:n3"
+            },
+            "to": {
+              "$ref": "#n:n4"
+            }
+          },
+          {
+            "$id": "r:n7",
+            "type": {
+              "$ref": "#rt:n7"
+            },
+            "from": {
+              "$ref": "#n:n1"
+            },
+            "to": {
+              "$ref": "#n:n5"
+            }
+          },
+          {
+            "$id": "r:n8",
+            "type": {
+              "$ref": "#rt:n8"
+            },
+            "from": {
+              "$ref": "#n:n1"
+            },
+            "to": {
+              "$ref": "#n:n6"
+            }
+          },
+          {
+            "$id": "r:n9",
+            "type": {
+              "$ref": "#rt:n9"
+            },
+            "from": {
+              "$ref": "#n:n1"
+            },
+            "to": {
+              "$ref": "#n:n7"
+            }
+          },
+          {
+            "$id": "r:n10",
+            "type": {
+              "$ref": "#rt:n10"
+            },
+            "from": {
+              "$ref": "#n:n7"
+            },
+            "to": {
+              "$ref": "#n:n8"
+            }
+          },
+          {
+            "$id": "r:n11",
+            "type": {
+              "$ref": "#rt:n11"
+            },
+            "from": {
+              "$ref": "#n:n1"
+            },
+            "to": {
+              "$ref": "#n:n9"
+            }
+          },
+          {
+            "$id": "r:n12",
+            "type": {
+              "$ref": "#rt:n12"
+            },
+            "from": {
+              "$ref": "#n:n1"
+            },
+            "to": {
+              "$ref": "#n:n10"
+            }
+          },
+          {
+            "$id": "r:n14",
+            "type": {
+              "$ref": "#rt:n14"
+            },
+            "from": {
+              "$ref": "#n:n10"
+            },
+            "to": {
+              "$ref": "#n:n12"
+            }
+          },
+          {
+            "$id": "r:n15",
+            "type": {
+              "$ref": "#rt:n15"
+            },
+            "from": {
+              "$ref": "#n:n7"
+            },
+            "to": {
+              "$ref": "#n:n11"
+            }
+          }
+        ],
+        "constraints": [
+          {
+            "$id": "c:1",
+            "name": "id_Country_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n0"
+            },
+            "properties": [
+              {
+                "$ref": "#p:1"
+              }
+            ]
+          },
+          {
+            "$id": "c:3",
+            "name": "id_Region_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n2"
+            },
+            "properties": [
+              {
+                "$ref": "#p:7"
+              }
+            ]
+          },
+          {
+            "$id": "c:4",
+            "name": "id_City_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n3"
+            },
+            "properties": [
+              {
+                "$ref": "#p:8"
+              }
+            ]
+          },
+          {
+            "$id": "c:5",
+            "name": "id_Location_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n4"
+            },
+            "properties": [
+              {
+                "$ref": "#p:11"
+              }
+            ]
+          },
+          {
+            "$id": "c:7",
+            "name": "attacktype1_txt_Attack_Type_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n6"
+            },
+            "properties": [
+              {
+                "$ref": "#p:13"
+              }
+            ]
+          },
+          {
+            "$id": "c:8",
+            "name": "id_Specific_Target_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n7"
+            },
+            "properties": [
+              {
+                "$ref": "#p:14"
+              }
+            ]
+          },
+          {
+            "$id": "c:9",
+            "name": "id_Nationality_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n8"
+            },
+            "properties": [
+              {
+                "$ref": "#p:15"
+              }
+            ]
+          },
+          {
+            "$id": "c:10",
+            "name": "id_Motive_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n9"
+            },
+            "properties": [
+              {
+                "$ref": "#p:16"
+              }
+            ]
+          },
+          {
+            "$id": "c:11",
+            "name": "id_Weapon_Type_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n10"
+            },
+            "properties": [
+              {
+                "$ref": "#p:17"
+              }
+            ]
+          },
+          {
+            "$id": "c:12",
+            "name": "id_Weapon_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n12"
+            },
+            "properties": [
+              {
+                "$ref": "#p:18"
+              }
+            ]
+          },
+          {
+            "$id": "c:13",
+            "name": "id_Target_Type_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n11"
+            },
+            "properties": [
+              {
+                "$ref": "#p:26"
+              }
+            ]
+          },
+          {
+            "$id": "c:2",
+            "name": "id_Event_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n1"
+            },
+            "properties": [
+              {
+                "$ref": "#p:2"
+              }
+            ]
+          },
+          {
+            "$id": "c:6",
+            "name": "id_Terrorist_Group_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n5"
+            },
+            "properties": [
+              {
+                "$ref": "#p:12"
+              }
+            ]
+          }
+        ],
+        "indexes": [
+          {
+            "$id": "i:1",
+            "name": "id_Country_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n0"
+            },
+            "properties": [
+              {
+                "$ref": "#p:1"
+              }
+            ]
+          },
+          {
+            "$id": "i:2",
+            "name": "id_Event_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n1"
+            },
+            "properties": [
+              {
+                "$ref": "#p:2"
+              }
+            ]
+          },
+          {
+            "$id": "i:3",
+            "name": "id_Region_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n2"
+            },
+            "properties": [
+              {
+                "$ref": "#p:7"
+              }
+            ]
+          },
+          {
+            "$id": "i:4",
+            "name": "id_City_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n3"
+            },
+            "properties": [
+              {
+                "$ref": "#p:8"
+              }
+            ]
+          },
+          {
+            "$id": "i:5",
+            "name": "id_Location_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n4"
+            },
+            "properties": [
+              {
+                "$ref": "#p:11"
+              }
+            ]
+          },
+          {
+            "$id": "i:6",
+            "name": "id_Terrorist_Group_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n5"
+            },
+            "properties": [
+              {
+                "$ref": "#p:12"
+              }
+            ]
+          },
+          {
+            "$id": "i:7",
+            "name": "attacktype1_txt_Attack_Type_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n6"
+            },
+            "properties": [
+              {
+                "$ref": "#p:13"
+              }
+            ]
+          },
+          {
+            "$id": "i:8",
+            "name": "id_Specific_Target_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n7"
+            },
+            "properties": [
+              {
+                "$ref": "#p:14"
+              }
+            ]
+          },
+          {
+            "$id": "i:9",
+            "name": "id_Nationality_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n8"
+            },
+            "properties": [
+              {
+                "$ref": "#p:15"
+              }
+            ]
+          },
+          {
+            "$id": "i:10",
+            "name": "id_Motive_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n9"
+            },
+            "properties": [
+              {
+                "$ref": "#p:16"
+              }
+            ]
+          },
+          {
+            "$id": "i:11",
+            "name": "id_Weapon_Type_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n10"
+            },
+            "properties": [
+              {
+                "$ref": "#p:17"
+              }
+            ]
+          },
+          {
+            "$id": "i:12",
+            "name": "id_Weapon_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n12"
+            },
+            "properties": [
+              {
+                "$ref": "#p:18"
+              }
+            ]
+          },
+          {
+            "$id": "i:13",
+            "name": "id_Target_Type_uniq",
+            "indexType": "default",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:n11"
+            },
+            "properties": [
+              {
+                "$ref": "#p:26"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "graphSchemaExtensionsRepresentation": {
+      "nodeKeyProperties": [
+        {
+          "node": {
+            "$ref": "#n:n0"
+          },
+          "keyProperty": {
+            "$ref": "#p:1"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n1"
+          },
+          "keyProperty": {
+            "$ref": "#p:2"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n2"
+          },
+          "keyProperty": {
+            "$ref": "#p:7"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n3"
+          },
+          "keyProperty": {
+            "$ref": "#p:8"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n4"
+          },
+          "keyProperty": {
+            "$ref": "#p:11"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n5"
+          },
+          "keyProperty": {
+            "$ref": "#p:12"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n6"
+          },
+          "keyProperty": {
+            "$ref": "#p:13"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n7"
+          },
+          "keyProperty": {
+            "$ref": "#p:14"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n8"
+          },
+          "keyProperty": {
+            "$ref": "#p:15"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n9"
+          },
+          "keyProperty": {
+            "$ref": "#p:16"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n10"
+          },
+          "keyProperty": {
+            "$ref": "#p:17"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n12"
+          },
+          "keyProperty": {
+            "$ref": "#p:18"
+          }
+        },
+        {
+          "node": {
+            "$ref": "#n:n11"
+          },
+          "keyProperty": {
+            "$ref": "#p:26"
+          }
+        }
+      ]
+    },
+    "graphMappingRepresentation": {
+      "dataSourceSchema": {
+        "type": "local/csv",
+        "tableSchemas": [
+          {
+            "$id": "t:1",
+            "name": "globalterrorismdb_0522dist_short.csv",
+            "expanded": true,
+            "fields": [
+              {
+                "name": "eventid",
+                "type": "integer",
+                "sample": "198105300001",
+                "include": true
+              },
+              {
+                "name": "iyear",
+                "type": "integer",
+                "sample": "1981",
+                "include": true
+              },
+              {
+                "name": "imonth",
+                "type": "integer",
+                "sample": "5",
+                "include": true
+              },
+              {
+                "name": "iday",
+                "type": "integer",
+                "sample": "30",
+                "include": true
+              },
+              {
+                "name": "approxdate",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "extended",
+                "type": "string",
+                "sample": "No",
+                "include": true
+              },
+              {
+                "name": "resolution",
+                "type": "datetime",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "country",
+                "type": "integer",
+                "sample": "19",
+                "include": true
+              },
+              {
+                "name": "country_txt",
+                "type": "string",
+                "sample": "Bangladesh",
+                "include": true
+              },
+              {
+                "name": "region",
+                "type": "integer",
+                "sample": "6",
+                "include": true
+              },
+              {
+                "name": "region_txt",
+                "type": "string",
+                "sample": "South Asia",
+                "include": true
+              },
+              {
+                "name": "provstate",
+                "type": "string",
+                "sample": "Chittagong",
+                "include": true
+              },
+              {
+                "name": "city",
+                "type": "string",
+                "sample": "Chittagong",
+                "include": true
+              },
+              {
+                "name": "latitude",
+                "type": "float",
+                "sample": "22.341896",
+                "include": true
+              },
+              {
+                "name": "longitude",
+                "type": "float",
+                "sample": "91.815117",
+                "include": true
+              },
+              {
+                "name": "specificity",
+                "type": "float",
+                "sample": "1.0",
+                "include": true
+              },
+              {
+                "name": "vicinity",
+                "type": "string",
+                "sample": "No",
+                "include": true
+              },
+              {
+                "name": "location",
+                "type": "string",
+                "sample": "Ziaur Rahman was killed a Circuit House in Chittagong",
+                "include": true
+              },
+              {
+                "name": "summary",
+                "type": "string",
+                "sample": "05/30/1981: President Ziaur Rahman of Bangledesh was attending a two hour political meeting to help resolve an intra-party dispute at a Circuit House in Chittagong. At 3:30AM the President was awoken by two rebel Army strike teams who freely entered the Chittagong Circuit House. The forty-four policemen on duty offered no resistence when the first team fired two shots, killing one constable and four of Ziar’s defenders, and accidentally wounding two of their own men. When inside, Lt-Col Matiur Rahman [Mahbubur], a Freedom Fighter, shot and killed General Ziaur.",
+                "include": true
+              },
+              {
+                "name": "crit1",
+                "type": "boolean",
+                "sample": "1",
+                "include": true
+              },
+              {
+                "name": "crit2",
+                "type": "boolean",
+                "sample": "1",
+                "include": true
+              },
+              {
+                "name": "crit3",
+                "type": "boolean",
+                "sample": "1",
+                "include": true
+              },
+              {
+                "name": "doubtterr",
+                "type": "boolean",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "alternative",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "alternative_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "multiple",
+                "type": "string",
+                "sample": "No",
+                "include": true
+              },
+              {
+                "name": "success",
+                "type": "string",
+                "sample": "No",
+                "include": true
+              },
+              {
+                "name": "suicide",
+                "type": "string",
+                "sample": "No",
+                "include": true
+              },
+              {
+                "name": "attacktype1",
+                "type": "integer",
+                "sample": "1",
+                "include": true
+              },
+              {
+                "name": "attacktype1_txt",
+                "type": "string",
+                "sample": "Assassination",
+                "include": true
+              },
+              {
+                "name": "attacktype2",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "attacktype2_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "attacktype3",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "attacktype3_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targtype1",
+                "type": "integer",
+                "sample": "2",
+                "include": true
+              },
+              {
+                "name": "targtype1_txt",
+                "type": "string",
+                "sample": "Government (General)",
+                "include": true
+              },
+              {
+                "name": "targsubtype1",
+                "type": "float",
+                "sample": "17.0",
+                "include": true
+              },
+              {
+                "name": "targsubtype1_txt",
+                "type": "string",
+                "sample": "Head of State",
+                "include": true
+              },
+              {
+                "name": "corp1",
+                "type": "string",
+                "sample": "President of  Bangladesh",
+                "include": true
+              },
+              {
+                "name": "target1",
+                "type": "string",
+                "sample": "Ziaur Rahman",
+                "include": true
+              },
+              {
+                "name": "natlty1",
+                "type": "float",
+                "sample": "19.0",
+                "include": true
+              },
+              {
+                "name": "natlty1_txt",
+                "type": "string",
+                "sample": "Bangladesh",
+                "include": true
+              },
+              {
+                "name": "targtype2",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targtype2_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targsubtype2",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targsubtype2_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "corp2",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "target2",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "natlty2",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "natlty2_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targtype3",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targtype3_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targsubtype3",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targsubtype3_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "corp3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "target3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "natlty3",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "natlty3_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "gname",
+                "type": "string",
+                "sample": "Awami League",
+                "include": true
+              },
+              {
+                "name": "gsubname",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "gname2",
+                "type": "string",
+                "sample": "The Mukti Bahini",
+                "include": true
+              },
+              {
+                "name": "gsubname2",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "gname3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "gsubname3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "motive",
+                "type": "string",
+                "sample": "The attempted coup was staged by Bangledeshi rebel army officers who were supporters of the Awami League and veterans of the Mukti Bahini [1971 Freedom Fighters]. They were angered by Rahman's despotic and authoritarian rule, and his ruthless treatment of those holding political opposition.",
+                "include": true
+              },
+              {
+                "name": "guncertain1",
+                "type": "float",
+                "sample": "0.0",
+                "include": true
+              },
+              {
+                "name": "guncertain2",
+                "type": "float",
+                "sample": "0.0",
+                "include": true
+              },
+              {
+                "name": "guncertain3",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "individual",
+                "type": "boolean",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "nperps",
+                "type": "float",
+                "sample": "1.0",
+                "include": true
+              },
+              {
+                "name": "nperpcap",
+                "type": "float",
+                "sample": "26.0",
+                "include": true
+              },
+              {
+                "name": "claimed",
+                "type": "float",
+                "sample": "0.0",
+                "include": true
+              },
+              {
+                "name": "claimmode",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claimmode_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claim2",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claimmode2",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claimmode2_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claim3",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claimmode3",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claimmode3_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "compclaim",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weaptype1",
+                "type": "integer",
+                "sample": "5",
+                "include": true
+              },
+              {
+                "name": "weaptype1_txt",
+                "type": "string",
+                "sample": "Firearms",
+                "include": true
+              },
+              {
+                "name": "weapsubtype1",
+                "type": "float",
+                "sample": "3.0",
+                "include": true
+              },
+              {
+                "name": "weapsubtype1_txt",
+                "type": "string",
+                "sample": "Handgun",
+                "include": true
+              },
+              {
+                "name": "weaptype2",
+                "type": "float",
+                "sample": "5.0",
+                "include": true
+              },
+              {
+                "name": "weaptype2_txt",
+                "type": "string",
+                "sample": "Firearms",
+                "include": true
+              },
+              {
+                "name": "weapsubtype2",
+                "type": "float",
+                "sample": "2.0",
+                "include": true
+              },
+              {
+                "name": "weapsubtype2_txt",
+                "type": "string",
+                "sample": "Automatic or Semi-Automatic Rifle",
+                "include": true
+              },
+              {
+                "name": "weaptype3",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weaptype3_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weapsubtype3",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weapsubtype3_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weaptype4",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weaptype4_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weapsubtype4",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weapsubtype4_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weapdetail",
+                "type": "string",
+                "sample": "A Sub-machine gun and hand rocket launcher were used.",
+                "include": true
+              },
+              {
+                "name": "nkill",
+                "type": "float",
+                "sample": "6.0",
+                "include": true
+              },
+              {
+                "name": "nkillus",
+                "type": "float",
+                "sample": "0.0",
+                "include": true
+              },
+              {
+                "name": "nkillter",
+                "type": "float",
+                "sample": "0.0",
+                "include": true
+              },
+              {
+                "name": "nwound",
+                "type": "float",
+                "sample": "2.0",
+                "include": true
+              },
+              {
+                "name": "nwoundus",
+                "type": "float",
+                "sample": "0.0",
+                "include": true
+              },
+              {
+                "name": "nwoundte",
+                "type": "float",
+                "sample": "2.0",
+                "include": true
+              },
+              {
+                "name": "property",
+                "type": "integer",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "propextent",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "propextent_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "propvalue",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "propcomment",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ishostkid",
+                "type": "float",
+                "sample": "0.0",
+                "include": true
+              },
+              {
+                "name": "nhostkid",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "nhostkidus",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "nhours",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ndays",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "divert",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "kidhijcountry",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ransom",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ransomamt",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ransomamtus",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ransompaid",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ransompaidus",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ransomnote",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "hostkidoutcome",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "hostkidoutcome_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "nreleased",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "addnotes",
+                "type": "string",
+                "sample": "Lt-Col Mahboob and revolting Officers of the Bangledesh Army fired shots leading to injuries and deaths that occured during the event. However, Lt-Col Matiur Rahman was the one who shot and killed the President. Reports differ as to the number of casualties, as well as those captured, tried, charged  and put to death. Reports give conflicting information regarding the involvement of Major General Abul Manzoor [Manjoor] in the military coup.",
+                "include": true
+              },
+              {
+                "name": "scite1",
+                "type": "string",
+                "sample": "“Further Installment of White Paper on Chittagong Mutiny.” BBC Summary of World Reports, August 10, 1981, Internal Affairs Section",
+                "include": true
+              },
+              {
+                "name": "scite2",
+                "type": "string",
+                "sample": "Singh, Nagendra Kr. Encyclopedia of Bangladesh: Bangladesh Post-Independence Politics-I. New Delhi: Mehra Offset Press, 2003.",
+                "include": true
+              },
+              {
+                "name": "scite3",
+                "type": "string",
+                "sample": "Rangan, Kasturi. “Bangladesh Leader is Shot and Killed in Coup Attempt.” The New York Times, May 31, 1981, Section 1",
+                "include": true
+              },
+              {
+                "name": "dbsource",
+                "type": "string",
+                "sample": "UMD Assassinations Project",
+                "include": true
+              },
+              {
+                "name": "INT_LOG",
+                "type": "integer",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "INT_IDEO",
+                "type": "integer",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "INT_MISC",
+                "type": "boolean",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "INT_ANY",
+                "type": "integer",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "related",
+                "type": "string",
+                "sample": "",
+                "include": true
+              }
+            ]
+          },
+          {
+            "$id": "t:2",
+            "name": "globalterrorismdb_0522dist.csv",
+            "expanded": false,
+            "fields": [
+              {
+                "name": "eventid",
+                "type": "integer",
+                "sample": "198001150005",
+                "include": true
+              },
+              {
+                "name": "iyear",
+                "type": "integer",
+                "sample": "1980",
+                "include": true
+              },
+              {
+                "name": "imonth",
+                "type": "boolean",
+                "sample": "1",
+                "include": true
+              },
+              {
+                "name": "iday",
+                "type": "integer",
+                "sample": "15",
+                "include": true
+              },
+              {
+                "name": "approxdate",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "extended",
+                "type": "boolean",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "resolution",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "country",
+                "type": "integer",
+                "sample": "603",
+                "include": true
+              },
+              {
+                "name": "country_txt",
+                "type": "string",
+                "sample": "United Kingdom",
+                "include": true
+              },
+              {
+                "name": "region",
+                "type": "integer",
+                "sample": "8",
+                "include": true
+              },
+              {
+                "name": "region_txt",
+                "type": "string",
+                "sample": "Western Europe",
+                "include": true
+              },
+              {
+                "name": "provstate",
+                "type": "string",
+                "sample": "Northern Ireland",
+                "include": true
+              },
+              {
+                "name": "city",
+                "type": "string",
+                "sample": "Armagh",
+                "include": true
+              },
+              {
+                "name": "latitude",
+                "type": "float",
+                "sample": "54.347539",
+                "include": true
+              },
+              {
+                "name": "longitude",
+                "type": "float",
+                "sample": "-6.656108",
+                "include": true
+              },
+              {
+                "name": "specificity",
+                "type": "float",
+                "sample": "1.0",
+                "include": true
+              },
+              {
+                "name": "vicinity",
+                "type": "boolean",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "location",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "summary",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "crit1",
+                "type": "boolean",
+                "sample": "1",
+                "include": true
+              },
+              {
+                "name": "crit2",
+                "type": "boolean",
+                "sample": "1",
+                "include": true
+              },
+              {
+                "name": "crit3",
+                "type": "boolean",
+                "sample": "1",
+                "include": true
+              },
+              {
+                "name": "doubtterr",
+                "type": "integer",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "alternative",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "alternative_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "multiple",
+                "type": "float",
+                "sample": "0.0",
+                "include": true
+              },
+              {
+                "name": "success",
+                "type": "boolean",
+                "sample": "1",
+                "include": true
+              },
+              {
+                "name": "suicide",
+                "type": "boolean",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "attacktype1",
+                "type": "integer",
+                "sample": "3",
+                "include": true
+              },
+              {
+                "name": "attacktype1_txt",
+                "type": "string",
+                "sample": "Bombing/Explosion",
+                "include": true
+              },
+              {
+                "name": "attacktype2",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "attacktype2_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "attacktype3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "attacktype3_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targtype1",
+                "type": "integer",
+                "sample": "2",
+                "include": true
+              },
+              {
+                "name": "targtype1_txt",
+                "type": "string",
+                "sample": "Government (General)",
+                "include": true
+              },
+              {
+                "name": "targsubtype1",
+                "type": "float",
+                "sample": "21.0",
+                "include": true
+              },
+              {
+                "name": "targsubtype1_txt",
+                "type": "string",
+                "sample": "Government Building/Facility/Office",
+                "include": true
+              },
+              {
+                "name": "corp1",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "target1",
+                "type": "string",
+                "sample": "Government Office",
+                "include": true
+              },
+              {
+                "name": "natlty1",
+                "type": "float",
+                "sample": "233.0",
+                "include": true
+              },
+              {
+                "name": "natlty1_txt",
+                "type": "string",
+                "sample": "Northern Ireland",
+                "include": true
+              },
+              {
+                "name": "targtype2",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targtype2_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targsubtype2",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targsubtype2_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "corp2",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "target2",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "natlty2",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "natlty2_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targtype3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targtype3_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targsubtype3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "targsubtype3_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "corp3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "target3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "natlty3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "natlty3_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "gname",
+                "type": "string",
+                "sample": "Irish Republican Army (IRA)",
+                "include": true
+              },
+              {
+                "name": "gsubname",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "gname2",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "gsubname2",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "gname3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "gsubname3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "motive",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "guncertain1",
+                "type": "float",
+                "sample": "0.0",
+                "include": true
+              },
+              {
+                "name": "guncertain2",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "guncertain3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "individual",
+                "type": "boolean",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "nperps",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "nperpcap",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claimed",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claimmode",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claimmode_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claim2",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claimmode2",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claimmode2_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claim3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claimmode3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "claimmode3_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "compclaim",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weaptype1",
+                "type": "integer",
+                "sample": "6",
+                "include": true
+              },
+              {
+                "name": "weaptype1_txt",
+                "type": "string",
+                "sample": "Explosives",
+                "include": true
+              },
+              {
+                "name": "weapsubtype1",
+                "type": "float",
+                "sample": "16.0",
+                "include": true
+              },
+              {
+                "name": "weapsubtype1_txt",
+                "type": "string",
+                "sample": "Unknown Explosive Type",
+                "include": true
+              },
+              {
+                "name": "weaptype2",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weaptype2_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weapsubtype2",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weapsubtype2_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weaptype3",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weaptype3_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weapsubtype3",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weapsubtype3_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weaptype4",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weaptype4_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weapsubtype4",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weapsubtype4_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "weapdetail",
+                "type": "string",
+                "sample": "Explosive",
+                "include": true
+              },
+              {
+                "name": "nkill",
+                "type": "float",
+                "sample": "0.0",
+                "include": true
+              },
+              {
+                "name": "nkillus",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "nkillter",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "nwound",
+                "type": "float",
+                "sample": "0.0",
+                "include": true
+              },
+              {
+                "name": "nwoundus",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "nwoundte",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "property",
+                "type": "boolean",
+                "sample": "1",
+                "include": true
+              },
+              {
+                "name": "propextent",
+                "type": "float",
+                "sample": "4.0",
+                "include": true
+              },
+              {
+                "name": "propextent_txt",
+                "type": "string",
+                "sample": "Unknown",
+                "include": true
+              },
+              {
+                "name": "propvalue",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "propcomment",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ishostkid",
+                "type": "float",
+                "sample": "0.0",
+                "include": true
+              },
+              {
+                "name": "nhostkid",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "nhostkidus",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "nhours",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ndays",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "divert",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "kidhijcountry",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ransom",
+                "type": "float",
+                "sample": "0.0",
+                "include": true
+              },
+              {
+                "name": "ransomamt",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ransomamtus",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ransompaid",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ransompaidus",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "ransomnote",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "hostkidoutcome",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "hostkidoutcome_txt",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "nreleased",
+                "type": "float",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "addnotes",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "scite1",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "scite2",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "scite3",
+                "type": "string",
+                "sample": "",
+                "include": true
+              },
+              {
+                "name": "dbsource",
+                "type": "string",
+                "sample": "PGIS",
+                "include": true
+              },
+              {
+                "name": "INT_LOG",
+                "type": "integer",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "INT_IDEO",
+                "type": "integer",
+                "sample": "0",
+                "include": true
+              },
+              {
+                "name": "INT_MISC",
+                "type": "integer",
+                "sample": "1",
+                "include": true
+              },
+              {
+                "name": "INT_ANY",
+                "type": "integer",
+                "sample": "1",
+                "include": true
+              },
+              {
+                "name": "related",
+                "type": "string",
+                "sample": "",
+                "include": true
+              }
+            ]
+          }
+        ]
+      },
+      "nodeMappings": [
+        {
+          "node": {
+            "$ref": "#n:n0"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "fieldName": "country_txt",
+              "property": {
+                "$ref": "#p:1"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n1"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "fieldName": "eventid",
+              "property": {
+                "$ref": "#p:2"
+              }
+            },
+            {
+              "fieldName": "iyear",
+              "property": {
+                "$ref": "#p:3"
+              }
+            },
+            {
+              "fieldName": "imonth",
+              "property": {
+                "$ref": "#p:4"
+              }
+            },
+            {
+              "fieldName": "iday",
+              "property": {
+                "$ref": "#p:5"
+              }
+            },
+            {
+              "fieldName": "summary",
+              "property": {
+                "$ref": "#p:6"
+              }
+            },
+            {
+              "fieldName": "nkill",
+              "property": {
+                "$ref": "#p:19"
+              }
+            },
+            {
+              "fieldName": "nkillus",
+              "property": {
+                "$ref": "#p:20"
+              }
+            },
+            {
+              "fieldName": "nkillter",
+              "property": {
+                "$ref": "#p:21"
+              }
+            },
+            {
+              "fieldName": "nwound",
+              "property": {
+                "$ref": "#p:22"
+              }
+            },
+            {
+              "fieldName": "nwoundus",
+              "property": {
+                "$ref": "#p:23"
+              }
+            },
+            {
+              "fieldName": "nwoundte",
+              "property": {
+                "$ref": "#p:24"
+              }
+            },
+            {
+              "fieldName": "property",
+              "property": {
+                "$ref": "#p:25"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n2"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "fieldName": "region_txt",
+              "property": {
+                "$ref": "#p:7"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n3"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "fieldName": "city",
+              "property": {
+                "$ref": "#p:8"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n4"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "fieldName": "latitude",
+              "property": {
+                "$ref": "#p:9"
+              }
+            },
+            {
+              "fieldName": "longitude",
+              "property": {
+                "$ref": "#p:10"
+              }
+            },
+            {
+              "fieldName": "location",
+              "property": {
+                "$ref": "#p:11"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n5"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "fieldName": "gname",
+              "property": {
+                "$ref": "#p:12"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n6"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "fieldName": "attacktype1_txt",
+              "property": {
+                "$ref": "#p:13"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n7"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "fieldName": "target1",
+              "property": {
+                "$ref": "#p:14"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n8"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "fieldName": "natlty1_txt",
+              "property": {
+                "$ref": "#p:15"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n9"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "fieldName": "motive",
+              "property": {
+                "$ref": "#p:16"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n10"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "fieldName": "weaptype1_txt",
+              "property": {
+                "$ref": "#p:17"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n11"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "fieldName": "targtype1_txt",
+              "property": {
+                "$ref": "#p:26"
+              }
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:n12"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [
+            {
+              "fieldName": "weapdetail",
+              "property": {
+                "$ref": "#p:18"
+              }
+            }
+          ]
+        }
+      ],
+      "relationshipMappings": [
+        {
+          "relationship": {
+            "$ref": "#r:n0"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "eventid"
+          },
+          "toMapping": {
+            "fieldName": "country_txt"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n1"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "eventid"
+          },
+          "toMapping": {
+            "fieldName": "region_txt"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n2"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "country_txt"
+          },
+          "toMapping": {
+            "fieldName": "region_txt"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n3"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "eventid"
+          },
+          "toMapping": {
+            "fieldName": "city"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n4"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "region_txt"
+          },
+          "toMapping": {
+            "fieldName": "city"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n5"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "eventid"
+          },
+          "toMapping": {
+            "fieldName": "location"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n6"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "city"
+          },
+          "toMapping": {
+            "fieldName": "location"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n7"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "eventid"
+          },
+          "toMapping": {
+            "fieldName": "gname"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n8"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "eventid"
+          },
+          "toMapping": {
+            "fieldName": "attacktype1_txt"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n9"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "eventid"
+          },
+          "toMapping": {
+            "fieldName": "target1"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n10"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "target1"
+          },
+          "toMapping": {
+            "fieldName": "natlty1_txt"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n11"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "eventid"
+          },
+          "toMapping": {
+            "fieldName": "motive"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n12"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "eventid"
+          },
+          "toMapping": {
+            "fieldName": "weaptype1_txt"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n14"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "weaptype1_txt"
+          },
+          "toMapping": {
+            "fieldName": "weapdetail"
+          }
+        },
+        {
+          "relationship": {
+            "$ref": "#r:n15"
+          },
+          "tableSchema": {
+            "$ref": "#t:1"
+          },
+          "propertyMappings": [],
+          "fromMapping": {
+            "fieldName": "target1"
+          },
+          "toMapping": {
+            "fieldName": "targtype1_txt"
+          }
+        }
+      ]
+    },
+    "configurations": {
+      "idsToIgnore": []
+    }
+  }
+}
