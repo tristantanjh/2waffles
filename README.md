@@ -155,5 +155,3 @@ MONGO_PASSWORD=<YOUR_MONGODB_PASSWORD>
 6. Visit `http://localhost:5006/app` to explore the application!
 
 ---
-
-Reference
