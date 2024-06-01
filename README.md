@@ -44,6 +44,10 @@ Reports and articles on terrorism usually contain a lot of text, which are unstr
 
 _Made for [NUS' LifeHack 2024](https://devpost.com/software/terrograph) - Theme 3, Subtheme 2._
 
+## Architecture
+
+![architecture diagram](/assets/architecture.jpg)
+
 ## Features
 
 Our project leverages LLMs (OpenAI) and Neo4j's knowledge graphs to create a comprehensive system for managing and querying information about terrorism incidents. The project consists of several key components:
