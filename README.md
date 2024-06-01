@@ -2,6 +2,8 @@
 
 # LifeHack 2024 - TerroGraph
 
+## _TerroGraph: Graph Your Way Out of Terror Confusion_ <br/>By 2Waffles
+
 <div>
 
 <img src="https://img.shields.io/badge/neo4j-4581C3?style=flat-square&logo=neo4j&logoColor=61DAFB" alt="neo4j">
@@ -122,7 +124,7 @@ Throughout the course of this project, we learned several key lessons:
 
 ## Installation
 
-Before running the application, make sure that you have all prior dependencies installed (python, panel, pymupdf, langchain, openai, etc), and that you have a mongodb atlas account, an openAI API key, and a neo4J instance set up.
+Before running the application, make sure that you have all prior dependencies installed (python, panel, pymupdf, langchain, openai, etc), and that you have a mongodb atlas account, an openAI API key, and a neo4jJ instance set up.
 
 1. Clone the repository to your local machine.
 
@@ -130,7 +132,12 @@ Before running the application, make sure that you have all prior dependencies i
 git clone https://github.com/tristantanjh/2waffles.git
 ```
 
-2. Create a `.env` file in the root directory.
+2. (Optional) Create either a python virtual environment or use Anaconda package manager to handle the dependencies required for this project.
+
+3. Install all required dependencies. A detailed list of dependencies can be found in `requirements.txt`.  
+   Special care have to be taken when installing _pytesseract_. Please refer to the installation guide for pytesseract on the official [github repo](https://github.com/UB-Mannheim/tesseract?tab=readme-ov-file).
+
+4. Create a `.env` file in the root directory.
 
 ```bash
 OPENAI_API_KEY=<YOUR_API_KEY>
@@ -140,5 +147,13 @@ NEO4J_PASSWORD=<YOUR_INSTANCE_PASSWORD>
 MONGO_PASSWORD=<YOUR_MONGODB_PASSWORD>
 ```
 
-3. Run `panel serve app.py` in your cmd for this environment.
-4. Visit `http://localhost:5006/app?theme=default` to explore the application!
+&nbsp; _Note_: You will have to populate the Neo4j database using 2 methods:  
+&nbsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;I. Load and import `/data/neo4j_model.json` together with `/data/globalterrorismdb_0522dist_short.csv` in the Neo4j dashboard.  
+&nbsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;II. Run `/notebooks/scrapper.ipynb` to scrap CNA and APNews for latest news on terrorism and populate Neo4j knowledge graph.
+
+5. Run `panel serve app.py` in your cmd for this environment.
+6. Visit `http://localhost:5006/app` to explore the application!
+
+---
+
+Reference
