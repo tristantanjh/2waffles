@@ -66,7 +66,7 @@ Our project leverages LLMs (OpenAI) and Neo4j's knowledge graphs to create a com
 1. Knowledge Graph Prepopulation:
 
 <p align="center">
-  <img src="/assets/graph.jpg" alt="graph" title="graph" align="center" height="250" />
+  <img src="/assets/graph.jpg" alt="graph" title="graph" align="center" height="300" />
 </p>
 
 - Collected data from an online database of known terror attacks.
