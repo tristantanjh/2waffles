@@ -160,6 +160,7 @@ I. Load and import <code>/data/neo4j_model.json</code> together with <code>/data
 <dl><dd><dl><dd><dl>
     II. Run <code>/notebooks/scrapper.ipynb</code> to scrap CNA and APNews for latest news on terrorism and populate Neo4j knowledge graph. 
 </dl></dd></dl></dd></dl>
+
 5. Run `panel serve app.py` in your cmd for this environment.
 6. Visit `http://localhost:5006/app` to explore the application!
 
