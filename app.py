@@ -202,7 +202,7 @@ def handle_question(contents, user, instance):
     logger.info("A question is asked: " + contents)
     local_agent = hp.build_workflow()
     answer = hp.run_agent(contents, local_agent, chat_history)
-    chat_history.append((contents, answer))
+    chat_history = [(contents, answer)]
     return answer
 
 pdf_input = pn.widgets.FileInput(name="PDF File", accept=".pdf")
