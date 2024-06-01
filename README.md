@@ -147,10 +147,19 @@ NEO4J_PASSWORD=<YOUR_INSTANCE_PASSWORD>
 MONGO_PASSWORD=<YOUR_MONGODB_PASSWORD>
 ```
 
-&nbsp; _Note_: You will have to populate the Neo4j database using 2 methods:  
-&nbsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;I. Load and import `/data/neo4j_model.json` together with `/data/globalterrorismdb_0522dist_short.csv` in the Neo4j dashboard.  
-&nbsp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;II. Run `/notebooks/scrapper.ipynb` to scrap CNA and APNews for latest news on terrorism and populate Neo4j knowledge graph.
-
+<dl>
+  <dd>
+    Note: You will have to populate the Neo4j database using 2 methods:     
+  
+    
+  </dd>
+</dl>
+<dl><dd><dl><dd>
+I. Load and import <code>/data/neo4j_model.json</code> together with <code>/data/globalterrorismdb_0522dist_short.csv</code> in the Neo4j dashboard.  
+</dl></dd></dl></dd>
+<dl><dd><dl><dd><dl>
+    II. Run <code>/notebooks/scrapper.ipynb</code> to scrap CNA and APNews for latest news on terrorism and populate Neo4j knowledge graph. 
+</dl></dd></dl></dd></dl>
 5. Run `panel serve app.py` in your cmd for this environment.
 6. Visit `http://localhost:5006/app` to explore the application!
 
