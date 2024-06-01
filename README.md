@@ -48,9 +48,7 @@ Our project leverages LLMs (OpenAI) and Neo4j's knowledge graphs to create a com
 
 1. **User Interface**
 
-<p align="center">
-  <img src="/assets/UI.png" alt="graph" title="graph" align="center" height="250" />
-</p>
+![UI img](./assets/UI.png)
 
 - Chatbot: The chatbot interface allows users to ask queries about terrorism. It retrieves relevant information from the Neo4j database and provides responses based on the knowledge graph.
 - PDF Uploader: Users can upload PDF files containing articles about terrorism. The system extracts text from the PDFs, processes the content to identify entities, and updates the knowledge graph accordingly.
