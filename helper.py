@@ -52,7 +52,8 @@ LOG_CONFIG = {
         }
     }
 }
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+# pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = r"/opt/homebrew/Cellar/tesseract/5.3.4_1/bin/tesseract"
 
 logging.config.dictConfig(LOG_CONFIG)
 logger = logging.getLogger("waffles_logger")
