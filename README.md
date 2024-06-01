@@ -48,6 +48,10 @@ Our project leverages LLMs (OpenAI) and Neo4j's knowledge graphs to create a com
 
 1. **User Interface**
 
+<p align="center">
+  <img src="/assets/UI.png" alt="graph" title="graph" align="center" height="250" />
+</p>
+
 - Chatbot: The chatbot interface allows users to ask queries about terrorism. It retrieves relevant information from the Neo4j database and provides responses based on the knowledge graph.
 - PDF Uploader: Users can upload PDF files containing articles about terrorism. The system extracts text from the PDFs, processes the content to identify entities, and updates the knowledge graph accordingly.
 
@@ -61,13 +65,13 @@ Our project leverages LLMs (OpenAI) and Neo4j's knowledge graphs to create a com
 
 1. Knowledge Graph Prepopulation:
 
-- Collected data from an online database of known terror attacks.
-- Processed the data to extract entities and relationships.
-- Populated the Neo4j knowledge graph with the preprocessed data.
-
 <p align="center">
   <img src="/assets/graph.jpg" alt="graph" title="graph" align="center" height="250" />
 </p>
+
+- Collected data from an online database of known terror attacks.
+- Processed the data to extract entities and relationships.
+- Populated the Neo4j knowledge graph with the preprocessed data.
 
 2. RAG Model Implementation:
 
@@ -77,10 +81,11 @@ Our project leverages LLMs (OpenAI) and Neo4j's knowledge graphs to create a com
 
 3. LangGraph Routing
 
-- Using LangChain's Langgraph API, we implemented agent-based routing for different LLM outputs.
 <p align="center">
   <img src="/assets/workflow.png" alt="workflow" title="Workflow" align="center" height="250" />
 </p>
+
+- Using LangChain's Langgraph API, we implemented agent-based routing for different LLM outputs.
 
 4. Web Scraping Scheduler:
 
