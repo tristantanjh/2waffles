@@ -27,7 +27,7 @@
 - Group Name: 2 Waffles
 - Project Name: TerroGraph
 
-### Video Demo Link:
+### [Video Demo Link](https://www.youtube.com/watch?v=n5GImspdNGE)
 
 ## Table of Contents
 
