@@ -15,19 +15,21 @@
 
 ![cover img](./assets/cover.png)
 
-### Team Members
+#### Team Members
 
 - [Tristan Tan](https://github.com/tristantanjh)
 - [Oscar Qian](https://github.com/oscarqjh)
 - [Joshau Goh](https://github.com/joshuagohez)
 - [Qu Zhetao](https://github.com/quzhetao01)
 
-### Group Details
+#### Group Details
 
 - Group Name: 2 Waffles
 - Project Name: TerroGraph
 
-### [Video Demo Link](https://www.youtube.com/watch?v=n5GImspdNGE)
+#### [Video Demo Link](https://www.youtube.com/watch?v=n5GImspdNGE)
+
+_Made for [NUS' LifeHack 2024](https://devpost.com/software/terrograph) - Theme 3, Subtheme 2. **This project won 3rd Place. Check out the [DevPost Page here](https://devpost.com/software/terrograph)!**_
 
 ## Table of Contents
 
@@ -41,8 +43,6 @@
 ## Project Details
 
 Reports and articles on terrorism usually contain a lot of text, which are unstructured and difficult to resolve across reports in an automated fashion. For instance, linking articles about a terror incident, all coming in at different times in a day with varying details, can be challenging. Each report contains entities (Person, Object, Location, Events) that could be represented in a knowledge graph and accessed through a chatbot. TerroGraph aims to design and implement a Large Language Model (LLM) that can extract entities from reports into a knowledge graph, and an LLM that can answer questions based on the generated knowledge graph.
-
-_Made for [NUS' LifeHack 2024](https://devpost.com/software/terrograph) - Theme 3, Subtheme 2._
 
 ## Architecture
 
