@@ -29,11 +29,12 @@
 
 #### [Video Demo Link](https://www.youtube.com/watch?v=n5GImspdNGE)
 
-_Made for [NUS' LifeHack 2024](https://devpost.com/software/terrograph) - Theme 3, Subtheme 2. **This project won 3rd Place. Check out the [DevPost Page here](https://devpost.com/software/terrograph)!**_
+_Made for [NUS' LifeHack 2024](https://lifehack-2024.devpost.com/) - Theme 3, Subtheme 2. **This project won 3rd Place. Check out the [DevPost Page here](https://devpost.com/software/terrograph)!**_
 
 ## Table of Contents
 
 - [Project Details](#project-details)
+- [Architecture](#architecture)
 - [Features](#features)
 - [How We Did It](#how-we-did-it)
 - [Challenges Faced](#challenges-faced)
