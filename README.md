@@ -19,7 +19,7 @@
 
 - [Tristan Tan](https://github.com/tristantanjh)
 - [Oscar Qian](https://github.com/oscarqjh)
-- [Joshau Goh](https://github.com/joshuagohez)
+- [Joshua Goh](https://github.com/joshuagohez)
 - [Qu Zhetao](https://github.com/quzhetao01)
 
 #### Group Details
